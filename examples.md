@@ -44,6 +44,9 @@ func reverse(x int) int {
         reversed = reversed * 10 + last
         x = x / 10 
     }
+    if reversed > int(math.Pow(2, 31)) {
+        return 0
+    }
     if neg {
         reversed = reversed * -1
     }
