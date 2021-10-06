@@ -32,12 +32,20 @@ func climbStairs(n int) int {
 ## reverse int
 
 ```go
-var reversed int
 func reverse(x int) int {
+    var neg bool 
+    if x < 0 {
+        neg = true
+        x = int(math.Abs(float64(x)))
+    }
+    var reversed int
     for x > 0 {
-      last := x % 10
-      reversed = reversed * 10 + last
-      x = x / 10
+        last := x % 10
+        reversed = reversed * 10 + last
+        x = x / 10 
+    }
+    if neg {
+        reversed = reversed * -1
     }
     return reversed
 }
