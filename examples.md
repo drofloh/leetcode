@@ -85,3 +85,94 @@ func twoSum(nums []int, target int) []int {
 }
 ```
 
+## is palindrome
+
+```go
+func isPalindrome(x int) bool {
+    var ret bool
+    
+    strX := strconv.Itoa(x)
+    // fmt.Printf("%T", reverse)
+    reverse := ""
+    
+    for i, _ := range strX {
+        reverse += string(strX[len(strX) - 1 - i])
+    }
+    
+    if strX == reverse {
+        ret = true
+    }
+    return ret
+}
+```
+
+## remove element
+
+```go
+func removeElement(nums []int, val int) int {
+    for i := 0; i < len(nums); i++ {
+        if nums[i] == val {
+            nums = append(nums[:i], nums[i+1:]...)
+            i--
+        }
+    }
+    fmt.Println(nums)
+    return len(nums)
+}
+```
+
+## move zeros
+
+```go
+func moveZeroes(nums []int)  {
+    l := len(nums)
+    for i := 0; i < l; i++ {
+        if nums[i] == 0 {
+            nums = append(nums[:i], nums[i+1:]...)
+            nums = append(nums, 0)
+            i--
+            l--
+        }
+    }
+}
+```
+
+## search insert
+
+```go
+func searchInsert(nums []int, target int) int {
+    for i := 0; i < len(nums); i++ {
+        if nums[i] == target {
+            return i
+        }
+        if nums[i] > target {
+            return i
+        }
+    }
+    return len(nums)
+}
+```
+
+## merge / sort arrays
+
+```go
+func merge(nums1 []int, m int, nums2 []int, n int)  {
+    nums1 = append(nums1[:m], nums2[:]...)
+    var item int
+    var flag int
+    for i := 0; i < len(nums1); i++ {
+        item = nums1[i]
+		flag = 0
+        
+		for j := i - 1; j >= 0 && flag != 1; {
+			if item < nums1[j] {
+				nums1[j+1] = nums1[j]
+				j = j - 1
+				nums1[j+1] = item
+			} else {
+				flag = 1
+			}
+		}
+    }
+}
+```
