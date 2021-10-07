@@ -176,3 +176,19 @@ func merge(nums1 []int, m int, nums2 []int, n int)  {
     }
 }
 ```
+
+## length of last work
+
+```go
+func lengthOfLastWord(s string) int {
+    s = strings.TrimSpace(s)
+    var ret int = len(s)
+    for i := len(s) - 1; i >= 0; i-- {
+        if s[i] == ' ' {
+            ret = len(s[i + 1:])
+            break
+        }
+    }
+    return ret
+}
+```
